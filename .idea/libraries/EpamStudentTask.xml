@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="EpamStudentTask">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/EpamStudentTask.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
