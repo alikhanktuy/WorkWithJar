@@ -1,50 +1,41 @@
 import HomeTaskLibraryProvision.Group;
 import HomeTaskLibraryProvision.Student;
-
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Group programmers = new Group();
         Scanner scanner = new Scanner(System.in);
         String name = "";
         String surname = "";
-        Student student1 = new Student(surname, name);
-        System.out.println("Enter quantity if students");
-        int quantity = scanner.nextInt();
-        Student[] students = new Student[quantity];
-        int quantityOfStudents;
+        Student student = new Student(surname, name);
         boolean exit = false;
-        while (!exit) {
+        while (true) {
             programMenu();
             int userChoice = scanner.nextInt();
-            if (userChoice == 1) {
-                for (int i = 0; i < students.length; i++) {
-                    System.out.println("Enter name of student");
-                    name = scanner.next();
-                    System.out.println("Enter surname of student");
-                    surname = scanner.next();
-                    students[i] = new Student(surname, name);
-                    programmers.add(students[i]);
-                }
-                programmers.printAll();
-            } else if (userChoice == 2) {
-                System.out.println("Which number of student you wish rename");
-                int number = scanner.nextInt();
-                System.out.println("Enter new name of student");
+            if (userChoice == 5) {
+                System.out.println("Enter name of student");
                 name = scanner.next();
-                System.out.println("Enter new surname of student");
+                System.out.println("Enter surname of student");
                 surname = scanner.next();
-                programmers.renameStudent(students[number], surname, name);
+                student = new Student(surname, name);
+                programmers.add(student);
                 programmers.printAll();
-            } else if (userChoice == 3) {
-                System.out.println("Which number of student you wish remove");
-                int number = scanner.nextInt();
-                programmers.delStudent(students[number]);
+            } else if (userChoice == 6) {
+                System.out.println("Which student y want change");
+                int i=scanner.nextInt();
+                System.out.println("Change name");
+                name = scanner.next();
+                System.out.println("Change surname");
+                surname = scanner.next();
+                programmers.renameStudent(i, surname, name);
                 programmers.printAll();
-            } else if (userChoice == 4) {
-                exit = true;
-            } else {
+            } else if (userChoice == 7){
+                System.out.println("Which of the student u want remove");
+                int i= scanner.nextInt();
+                programmers.delStudent(i);
+                programmers.printAll();
+            }
+            else if(userChoice == 8) {
                 return;
             }
         }
@@ -53,9 +44,9 @@ public class Main {
     public static void programMenu() {
         System.out.println(
                 "Choose a menu item:" + "\n"
-                        + "1. Add" + "\n"
-                        + "2. Change" + "\n"
-                        + "3. Remove" + "\n"
-                        + "4. Exit" + "\n");
+                        + "5. Add student" + "\n"
+                        + "6. Rename student" + "\n"
+                        + "7. Remove student" + "\n"
+                        + "8. Exit" + "\n");
     }
 }
